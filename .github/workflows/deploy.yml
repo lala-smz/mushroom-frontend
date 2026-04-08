@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend-vue3
-          npm install
+          npm run build
 
       # 4. 打包 Vue 项目
       - name: Build Vue project
