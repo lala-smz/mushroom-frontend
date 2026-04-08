@@ -10,6 +10,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend-vue3  # 设置默认工作目录
     steps:
       # 1. 拉取代码
       - name: Checkout code
@@ -22,17 +25,13 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      # 3. 进入前端目录并安装依赖
+      # 3. 安装依赖
       - name: Install dependencies
-        run: |
-          cd frontend-vue3
-          npm run build
+        run: npm install
 
       # 4. 打包 Vue 项目
       - name: Build Vue project
-        run: |
-          cd frontend-vue3
-          npm run build
+        run: npm run build
 
       # 5. 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
