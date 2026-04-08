@@ -17,6 +17,8 @@ jobs:
       # 1. 拉取代码
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: false  # 禁用子模块更新
 
       # 2. 安装 Node.js
       - name: Setup Node.js
