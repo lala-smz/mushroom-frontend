@@ -10,9 +10,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend-vue3  # 设置默认工作目录
     steps:
       # 1. 拉取代码
       - name: Checkout code
@@ -29,17 +26,17 @@ jobs:
 
       # 3. 安装依赖
       - name: Install dependencies
-        working-directory: ./frontend-vue3
         run: npm install
+        working-directory: ./frontend-vue3
 
       # 4. 打包 Vue 项目
       - name: Build Vue project
-        working-directory: ./frontend-vue3
         run: npm run build
+        working-directory: ./frontend-vue3
 
       # 5. 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./dist # 打包后的 dist 文件夹
+          folder: ./frontend-vue3/dist # 打包后的 dist 文件夹
           branch: gh-pages # 部署到 gh-pages 分支（自动创建）
