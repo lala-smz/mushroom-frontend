@@ -27,16 +27,14 @@ jobs:
       # 3. 安装依赖
       - name: Install dependencies
         run: npm install
-        working-directory: ./frontend-vue3
 
       # 4. 打包 Vue 项目
       - name: Build Vue project
         run: npm run build
-        working-directory: ./frontend-vue3
 
       # 5. 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./frontend-vue3/dist # 打包后的 dist 文件夹
+          folder: ./dist # 打包后的 dist 文件夹
           branch: gh-pages # 部署到 gh-pages 分支（自动创建）
