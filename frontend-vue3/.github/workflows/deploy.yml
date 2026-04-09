@@ -41,5 +41,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./frontend-vue3/dist # 打包后的 dist 文件夹
+          folder: ./dist # 打包后的 dist 文件夹
           branch: gh-pages # 部署到 gh-pages 分支（自动创建）
