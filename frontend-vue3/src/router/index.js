@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
@@ -24,8 +24,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  // 👇 只改这一行！！！ 加上你的项目名称！
-  history: createWebHashHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
