@@ -1,0 +1,45 @@
+name: Deploy Vue to GitHub Pages
+
+# 触发条件：推送到 master 分支，或手动触发
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+# 任务配置
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend-vue3  # 设置默认工作目录
+    steps:
+      # 1. 拉取代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: false  # 禁用子模块更新
+
+      # 2. 安装 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3. 安装依赖
+      - name: Install dependencies
+        working-directory: ./frontend-vue3
+        run: npm install
+
+      # 4. 打包 Vue 项目
+      - name: Build Vue project
+        working-directory: ./frontend-vue3
+        run: npm run build
+
+      # 5. 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: frontend-vue3/dist # 打包后的 dist 文件夹
+          branch: gh-pages # 部署到 gh-pages 分支（自动创建）
