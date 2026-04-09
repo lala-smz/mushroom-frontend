@@ -24,7 +24,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  // 👇 只改这一行！！！ 加上你的项目名称！
+  history: createWebHashHistory('/mushroom-frontend/'),
   routes
 })
 
